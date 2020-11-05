@@ -1,0 +1,36 @@
+CARGA DE CANDIDATOS:
+
+Acá fui combinanado para probar diferentes casos ej, grales y corner.
+
+{"id": "person1","name": "Amy Fish","skills": [ "scala", "go" ]}
+
+curl -d '{"id": "person1","name": "Amy Fish","skills": [ "scala", "go" ]}' -H 'Content-Type: application/json' http://localhost:3000/candidates
+
+curl -d '{"id": "person2","name": "Ana Perez","skills": [ "angular", "go", "css" ]}' -H 'Content-Type: application/json' http://localhost:3000/candidates
+
+curl -d '{"id": "person3","name": "Juan Lopez","skills": ["php", "erlang", "vue", "go" ]}' -H 'Content-Type: application/json' http://localhost:3000/candidates
+
+curl -d '{"id": "person4","name": "Ariel Gomez","skills": ["elixir", "erlang", "vue", "go" ]}' -H 'Content-Type: application/json' http://localhost:3000/candidates
+
+curl -d '{"id": "person5","name": "Pablo Clavito","skills": ["elixir", "erlang", "vue", "go" ]}' -H 'Content-Type: application/json' http://localhost:3000/candidates
+
+curl -d '{"id": "person6","name": "Clara Bella","skills": ["elixir", "erlang", "vue", "go", "node" ]}' -H 'Content-Type: application/json' http://localhost:3000/candidates
+
+curl -d -H 'Content-Type: application/json' http://localhost:3000/candidates
+
+CONSULTAS:
+
+También fui combinando aca también para probar diferentes casos ej, grales y corner.
+(Se pueden usar las url directamente desde un navegador y es lo mismo. Con la extensión correcta se ven los JSON de forma mas clara y estilizada)
+
+curl -w "%{http_code}" -v http://localhost:3000/candidates/search?skills=go,elixir,erlang
+curl -w "%{http_code}" -v http://localhost:3000/candidates/search?skills=go,elixir,erlang,node
+curl -w "%{http_code}" -v http://localhost:3000/candidates/search?skills=elixir,erlang
+curl -w "%{http_code}" -v http://localhost:3000/candidates/search?skills=php,erlang,go,css
+
+
+Validacion "Consulta sin parametros" status 400:
+
+curl -w "%{http_code}" -v http://localhost:3000/candidates/search
+
+
